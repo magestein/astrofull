@@ -9,7 +9,6 @@ export default function PrismaReact() {
     async function fetchData() {
       const { data, error } = await actions.getUsers.safe();
 
-      console.log(data);
       if (error) {
         setError(error);
       } else {
