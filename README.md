@@ -16,13 +16,16 @@ Browsing to [Google Cloud Console](https://console.cloud.google.com/apis/credent
 
 And save, also check "OAuth consent screen" and accept any screen
 
-Rename the file .env.sample to .env:
-GOOGLE\*CLIENT_ID=\*\**
-GOOGLE*CLIENT_SECRET\*\*\*
+Rename the file .env.sample to .env and add:
+
+```sh
+GOOGLE_CLIENT_ID=***
+GOOGLE_CLIENT_SECRET=***
+```
 
 also in .env you have to complete the AUTH_SECRET field. You can do this by copying the hash from https://generate-secret.vercel.app/32 or you can generate it yourself using the command on Mac "openssl rand -base64 32" or find a similar command for your OS.
 
-AUTH_SECRET=\*\*\*
+`AUTH_SECRET=***`
 
 ## PRISMA
 
