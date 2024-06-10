@@ -60,7 +60,7 @@ Inside of your Astro project, you'll see the following folders and files:
 │   ├── layouts/
 │   │   └── Layout.astro
 │   └── pages/
-│       └── index.astro           // test simple astro action
+│       └── index.astro           // test simple astro action, enter any number, and it will be multiplied by 2 on the server.
 │       └── prisma.astro          // test astro action + prisma
 │       └── prismareact.astro     // test astro action + prisma + react
 │       └── secret.astro          // test authjs
