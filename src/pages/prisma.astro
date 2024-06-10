@@ -1,9 +1,6 @@
 ---
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
-const personas = await prisma.user.findMany();
+import { actions } from "astro:actions";
+const { data, error } = await actions.getUsers.safe();
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +12,7 @@ const personas = await prisma.user.findMany();
 <body>
   <h1>Users</h1>
   <ul>
-    {personas.map((persona) => (
+    {data?.map((persona) => (
       <li>{persona.name} - {persona.email}</li>
     ))}
   </ul>
