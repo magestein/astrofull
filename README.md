@@ -1,7 +1,9 @@
-# Astro Starter Kit: Basics
+# Astro + authjs + server action + react + vanilla + prisma
+
+This project is intended to test some features of Astro, such as Astro actions with React and vanilla JavaScript. It also includes a small test with Prisma and Auth.js.
 
 ```sh
-npm i
+npm install
 
 ```
 
@@ -63,4 +65,11 @@ Inside of your Astro project, you'll see the following folders and files:
 │       └── prismareact.astro     // test astro action + prisma + react
 │       └── secret.astro          // test authjs
 └── package.json
+```
+
+## 🏃🏻‍♂️ Run project
+
+```sh
+npm run dev
+
 ```
