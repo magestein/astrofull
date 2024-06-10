@@ -35,7 +35,7 @@ export function MultiReact() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="numero">numero:</label>
+        <label htmlFor="numero">Numero:</label>
         <input type="text" id="numero" name="numero" required />
         <br />
         <input type="submit" value="Enviar" />
