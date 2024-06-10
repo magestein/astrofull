@@ -1,0 +1,38 @@
+
+
+    <div>
+        <form id="order-form">
+          <label>numero:</label>
+          <input type="text" id="numero" name="numero" required />
+          <br />
+          <input type="submit" value="Enviar" />
+        </form>
+
+      </div>
+
+    <script>
+      import { isInputError } from "astro:actions";
+      import { actions } from "astro:actions";
+    
+      const form = document.getElementById("order-form") as HTMLFormElement;
+    
+      // event listeners
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        // TODO: sanitize inputs
+    
+        const { data, error } = await actions.login.safe(formData);
+    
+        if (data) {
+          form.reset();
+          alert(data);
+        }
+    
+        if (error && isInputError(error)) {
+          console.log(error.fields);
+        }
+    
+       
+      });
+    </script>
