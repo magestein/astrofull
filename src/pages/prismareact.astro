@@ -1,0 +1,18 @@
+---
+import ViewTransitions from "astro/components/ViewTransitions.astro";
+
+import  PrismaReact from '../components/PrismaReact';
+---
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prisma + react</title>
+        <ViewTransitions />
+    </head>
+    <body>
+        <h1>Prisma + react</h1>
+        <PrismaReact client:load />
+    </body>
+</html>
