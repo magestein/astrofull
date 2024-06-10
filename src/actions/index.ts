@@ -19,7 +19,7 @@ export const server = {
     //handler: async ({ numero }) => {
     handler: async (data) => {
       //convert data.numero to number
-      console.log("data.name: ", data.numero);
+      console.log("data.numero: ", data.numero);
 
       const mutlply = Number(data.numero) * 2;
       return mutlply;
