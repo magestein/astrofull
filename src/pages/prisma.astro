@@ -1,0 +1,23 @@
+---
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+const personas = await prisma.user.findMany();
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astro + Prisma</title>
+</head>
+<body>
+  <h1>Users</h1>
+  <ul>
+    {personas.map((persona) => (
+      <li>{persona.name} - {persona.email}</li>
+    ))}
+  </ul>
+</body>
+</html>
