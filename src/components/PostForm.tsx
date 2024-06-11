@@ -16,7 +16,7 @@ export const PostForm = () => {
     //console.log(data);
     try {
       //const { data: responseData, error } = await actions.create.safe({title: data.title, content: data.content, slug: data.slug || "", isPublished: data.isPublished});
-      const { data: responseData, error } = await actions.create.safe(data);
+      const { data: responseData, error } = await actions.createPost.safe(data);
       if (responseData) {
         alert(responseData);
       }
