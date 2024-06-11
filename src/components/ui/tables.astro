@@ -1,0 +1,45 @@
+---
+export interface TableProps {
+  data: any[];
+}
+
+const { data }: TableProps = Astro.props;
+---
+
+<table>
+  <thead>
+    <tr>
+      <!-- Define tus encabezados aquí -->
+      <th>Title</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      data.map((item) => (
+        <tr>
+          <td>{item.title}</td>
+          <td>{item.content}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f4f4f4;
+  }
+</style>

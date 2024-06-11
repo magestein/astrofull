@@ -1,0 +1,70 @@
+---
+export interface PaginationProps {
+  totalPages: number;
+  currentPage: number;
+}
+
+const { totalPages, currentPage }: PaginationProps =
+  Astro.props as PaginationProps;
+
+function getPageLink(page: number): string {
+  return `/post?page=${page}`;
+}
+
+const pageNumbers = [];
+for (let i = 1; i <= totalPages; i++) {
+  pageNumbers.push(i);
+}
+---
+
+<nav>
+  {currentPage > 1 && <a href={getPageLink(1)}>Inicio</a>}
+  {currentPage > 1 && <a href={getPageLink(currentPage - 1)}>Atrás</a>}
+
+  {
+    pageNumbers.map((number) => (
+      <a
+        href={getPageLink(number)}
+        class={number === currentPage ? "active" : ""}
+      >
+        {number}
+      </a>
+    ))
+  }
+
+  {
+    currentPage < totalPages && (
+      <a href={getPageLink(currentPage + 1)}>Siguiente</a>
+    )
+  }
+  {currentPage < totalPages && <a href={getPageLink(totalPages)}>Fin</a>}
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  nav a {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #0070f3;
+    border: 1px solid #0070f3;
+    border-radius: 4px;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+  }
+
+  nav a.active {
+    background-color: #0070f3;
+    color: white;
+  }
+
+  nav a:hover:not(.active) {
+    background-color: #eaeaea;
+  }
+</style>

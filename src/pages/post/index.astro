@@ -1,14 +1,25 @@
 ---
-import Layout from "../../layaout/Layout.astro";
+import { paginate } from "../../lib/paginate";
+import { posts } from "../../data/posts";
+import Pagination from "../../components/ui/paginate.astro";
 
-import {PostForm} from '../../components/PostForm';
-
+const currentPage = parseInt(Astro.url.searchParams.get("page") || "1", 10);
+const { paginatedItems, totalPages } = paginate(posts, currentPage, 5);
 ---
 
-        <Layout>
-           
-            
-            <PostForm client:load />
-          </Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+  </head>
+  <body>
+    <h1>Blog Posts</h1>
+    <ul>
+      {paginatedItems.map((post) => <li>{post.title}</li>)}
+    </ul>
 
-        
+    <Pagination totalPages={totalPages} currentPage={currentPage} />
+  </body>
+</html>
