@@ -1,12 +1,9 @@
 ---
-import Layout from "../../layaout/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 
-import {PostForm} from '../../components/PostForm';
-
+import { PostForm } from "../../components/PostForm";
 ---
 
-<Layout>
-    <PostForm client:load />
+<Layout title="Create Post">
+  <PostForm client:load />
 </Layout>
-
-        

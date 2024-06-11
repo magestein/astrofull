@@ -1,25 +1,24 @@
 ---
 import { paginate } from "../../lib/paginate";
-import { posts } from "../../data/posts";
+import { posts } from "../../data/posts"; // Suponiendo que tienes un archivo `posts.js` con tus datos
+import Table from "../../components/ui/tables.astro";
 import Pagination from "../../components/ui/paginate.astro";
 
 const currentPage = parseInt(Astro.url.searchParams.get("page") || "1", 10);
 const { paginatedItems, totalPages } = paginate(posts, currentPage, 5);
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog</title>
-  </head>
-  <body>
-    <h1>Blog Posts</h1>
-    <ul>
-      {paginatedItems.map((post) => <li>{post.title}</li>)}
-    </ul>
+<Layout title="Post">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Blog Posts</h1>
+    <a
+      href="/post/create"
+      class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+      >Crear Post</a
+    >
+  </div>
 
-    <Pagination totalPages={totalPages} currentPage={currentPage} />
-  </body>
-</html>
+  <Table data={paginatedItems} />
+  <Pagination totalPages={totalPages} currentPage={currentPage} />
+</Layout>
