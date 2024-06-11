@@ -27,6 +27,14 @@ export const server = {
   }),
 
   //POST
+
+  getAllPost: defineAction({
+    handler: async () => {
+      const post = await prisma.post.findMany();
+      return post;
+    },
+  }),
+
   create: defineAction({
     //accept: "form",
     input: z.object({
