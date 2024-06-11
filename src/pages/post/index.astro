@@ -1,15 +1,14 @@
 ---
+import Layout from "../../layaout/Layout.astro";
+
 import {PostForm} from '../../components/PostForm';
 
 ---
 
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Post</title>
-    </head>
-    <body>
-        <PostForm client:load />
-    </body>
-</html>
+        <Layout>
+           
+            
+            <PostForm client:load />
+          </Layout>
+
+        
