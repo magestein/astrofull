@@ -4,7 +4,6 @@ import type { FormType } from "../types/post";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-import { Fragment } from "react";
 
 export const PostForm = () => {
   const {
@@ -30,7 +29,7 @@ export const PostForm = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <h1 className="text-2xl font-bold mb-4">Create Post</h1>
       <form
         onSubmit={handleSubmit(handleCreatePost)}
@@ -66,14 +65,11 @@ export const PostForm = () => {
         </div>
         <div className="mb-4 flex items-center">
           <Input
-            className="form-checkbox w-4 h-4 text-purple-600 bg-gray-800 border-gray-700 rounded focus:ring-purple-500"
+            className="form-checkbox w-4 h-4 text-purple-600 bg-gray-800 border-gray-700 rounded focus:ring-purple-500 mr-2"
             type="checkbox"
             {...register("isPublished")}
           />
-          <label
-            className="pr-10 block text-sm font-medium"
-            htmlFor="isPublished"
-          >
+          <label className="block text-sm font-medium" htmlFor="isPublished">
             is Published:
           </label>
         </div>
@@ -85,6 +81,6 @@ export const PostForm = () => {
           {isSubmitting ? "Creando..." : "Create"}
         </Button>
       </form>
-    </Fragment>
+    </>
   );
 };
