@@ -18,3 +18,13 @@ model User {
   name  String
   email String  @unique
 }
+
+model Post {
+  id String @id @default(cuid())
+  title String
+  content String
+  slug String?
+  isPublished Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
