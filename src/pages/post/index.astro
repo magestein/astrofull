@@ -1,14 +1,23 @@
 ---
 import { paginate } from "../../lib/paginate";
-import Table from "../../components/ui/tables.astro";
+import Table from "../../components/ui/table.astro";
 import Pagination from "../../components/ui/paginate.astro";
 
 import { actions } from "astro:actions";
-const { data, error } = await actions.getAllPost.safe({});
-console.log(data);
-console.log(error);
+const { data } = await actions.getAllPost.safe({});
+
 const currentPage = parseInt(Astro.url.searchParams.get("page") || "1", 10);
-const { paginatedItems, totalPages } = paginate(data, currentPage, 5);
+
+const newData =
+  data?.map((item) => ({
+    id: item.id,
+    title: item.title,
+    content: item.content,
+    slug: item.slug,
+    createdAt: item.createdAt,
+  })) ?? [];
+
+const { paginatedItems, totalPages } = paginate(newData, currentPage, 5);
 import Layout from "../../layouts/Layout.astro";
 ---
 
