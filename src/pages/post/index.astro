@@ -4,8 +4,11 @@ import { posts } from "../../data/posts"; // Suponiendo que tienes un archivo `p
 import Table from "../../components/ui/tables.astro";
 import Pagination from "../../components/ui/paginate.astro";
 
+import { actions, isInputError } from "astro:actions";
+const { data, error } = await actions.getAllPost.safe({});
+
 const currentPage = parseInt(Astro.url.searchParams.get("page") || "1", 10);
-const { paginatedItems, totalPages } = paginate(posts, currentPage, 5);
+const { paginatedItems, totalPages } = paginate(data, currentPage, 5);
 import Layout from "../../layouts/Layout.astro";
 ---
 

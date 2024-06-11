@@ -4,6 +4,13 @@ export interface TableProps {
 }
 
 const { data }: TableProps = Astro.props;
+
+function truncateText(text: string, length: number) {
+  if (text.length <= length) {
+    return text;
+  }
+  return text.substring(0, length) + "...";
+}
 ---
 
 <table class="min-w-full divide-y divide-gray-700">
@@ -31,10 +38,10 @@ const { data }: TableProps = Astro.props;
       data.map((item) => (
         <tr>
           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">
-            {item.title}
+            {truncateText(item.title, 15)}
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
-            {item.content}
+            {truncateText(item.content, 30)}
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
             {item.isPublished ? "Yes" : "No"}

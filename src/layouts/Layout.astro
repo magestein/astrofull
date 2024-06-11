@@ -4,6 +4,8 @@ interface Props {
   title: string;
 }
 
+import ViewTransitions from "astro/components/ViewTransitions.astro";
+
 const { title } = Astro.props;
 ---
 
@@ -12,14 +14,15 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Astro Site</title>
+    <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body class="bg-gray-900 text-white">
     <div id="__astro-root">
       <header class="p-4 border-b border-gray-700">
         <nav class="flex items-center justify-between">
           <div>
-            <a href="/" class="text-xl font-bold">Logo</a>
+            <a href="/post" class="text-xl font-bold">Logo</a>
           </div>
           <div class="space-x-4">
             <a href="/post" class="hover:text-gray-400">Post</a>
